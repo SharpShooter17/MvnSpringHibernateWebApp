@@ -30,4 +30,9 @@ public class Ranking {
 	
 	@Column(name = "SCORE")
 	private Long score;	
+	
+	public void addScore(){
+		this.score += 100;
+		System.out.println("Id: " + this.id + " score: " + this.score);
+	}
 }

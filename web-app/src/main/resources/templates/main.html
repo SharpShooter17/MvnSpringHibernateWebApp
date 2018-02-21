@@ -3,24 +3,40 @@
 <head>
     <title>Ranking</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
 </head>
-<body>
-    <table>
-		<capition>Ranking</capition>
-		<thead>
-			<th>ID</th>
-			<th>Email</th>
-			<th>Date</th>
-			<th>Score</th>
-		</thead>
-		<tbody>
-			<tr th:each="row: ${Rank}">
-				<td th:text="${row.getId()}">id</td>
-				<td th:text="${row.getEmail()}">email</td>
-				<td th:text="${row.getDate()}">date</td>
-				<td th:text="${row.getScore()}">score</td>
-			</tr>
-		</tbody>
-	</table>
-</body>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-4">
+					<table class="table table-striped" id="data">
+						<capition>Ranking</capition>
+						<thead>
+							<th>ID</th>
+							<th>Email</th>
+							<th>Date</th>
+							<th>Score</th>
+							<th>Add score</th>
+						</thead>
+						<tbody>
+							<tr th:each="row, stat: ${Rank}">
+								<td th:text="*{Rank[__${stat.index}__].getId()}">id</td>
+								<td th:text="*{Rank[__${stat.index}__].getEmail()}">email</td>
+								<td th:text="*{Rank[__${stat.index}__].getDate()}">date</td>
+								<td th:text="*{Rank[__${stat.index}__].getScore()}">score</td>
+								<td><button type="submit" th:onclick="*{Rank[__${stat.index}__].addScore()}">Add score</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</body>
 </html>
