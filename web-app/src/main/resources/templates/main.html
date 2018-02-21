@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ranking</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table>
+		<capition>Ranking</capition>
+		<thead>
+			<th>ID</th>
+			<th>Email</th>
+			<th>Date</th>
+			<th>Score</th>
+		</thead>
+		<tbody>
+			<tr th:each="row: ${Rank}">
+				<td th:text="${row.getId()}">id</td>
+				<td th:text="${row.getEmail()}">email</td>
+				<td th:text="${row.getDate()}">date</td>
+				<td th:text="${row.getScore()}">score</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
